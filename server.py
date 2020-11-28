@@ -8,7 +8,6 @@ import base64
 import sys
 import re
 
-
 app = Flask(__name__) 
 environ = 'development'
 dataconfig = json.loads(open("config.json", "r").read())
@@ -58,7 +57,11 @@ def filtered_results(results,num_results,min_score,selected_uni_filters,selected
 
 @app.route('/search', methods=['POST'])
 def search():
-    data = json.loads(request.data)
+    print(request.data)
+    print(type(request.data))
+    # Fixed here
+    data = json.loads(request.data.decode('utf8').replace("'", '"'))
+    
     querytext = data['query']
     num_results = data['num_results']
     selected_loc_filters = data['selected_loc_filters']
@@ -108,7 +111,10 @@ def get_ranker():
 
 @app.route("/admin/ranker/set", methods=["POST"])
 def set_ranker():
-    data = json.loads(request.data)
+
+    reader = codecs.getreader("utf-8")
+    obj = json.load(reader(request.data))
+    data = json.loads(obj)
 
     projectId = data["projectId"]
     apiToken = data["apiToken"]
