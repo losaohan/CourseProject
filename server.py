@@ -78,7 +78,9 @@ def search():
 
     ranker = load_ranker(app.searchconfig)
 
-    results = ranker.score(index, query, 100) 
+    results = ranker.score(index, query, 100)
+
+    print("JA after results JA")
 
     results,universities,states,countries = filtered_results(results,num_results,min_score,selected_uni_filters,selected_loc_filters)
 
@@ -86,13 +88,15 @@ def search():
     depts = [index.metadata(res[0]).get('department') for res in results]
     fac_names = [index.metadata(res[0]).get('fac_name') for res in results]
     fac_urls = [index.metadata(res[0]).get('fac_url') for res in results]
+    interest = [index.metadata(res[0]).get('fac_name') for res in results]
    
 
     previews = _get_doc_previews(doc_names,querytext)
     emails = [index.metadata(res[0]).get('email') for res in results]
 
 
-    docs = list(zip(doc_names, previews, emails,universities,depts,fac_names,fac_urls,states,countries))
+    # docs = list(zip(doc_names, previews, emails,universities,depts,fac_names,fac_urls,states,countries))
+    docs = list(zip(doc_names, previews, emails, universities, depts, fac_names, fac_urls, states, countries,interest))
 
     return jsonify({
         "docs": docs

@@ -16,6 +16,7 @@ var docDiv = (doc) => {
     const fac_name = doc[5]
     const fac_url = doc[6]
     const loc = doc[7]+', '+doc[8]
+    const inte = doc[9]
 
 
 
@@ -26,7 +27,15 @@ var docDiv = (doc) => {
        <div style="display: flex;">
 
         
-                 <b style="font-size:14pt">${fac_name}</b>
+                 <b style="font-size:15pt">${fac_name}</b>
+                 
+                 <table border="1">
+                 <thead>
+                 <p>A OF INTEREST</p>
+                 <b style="font-size:15pt">${inte}</b>
+                 </thead>
+                 </table>
+                 
                  <a style="margin-left:auto;color:black;" href=${fac_url} target="_blank"><i class="material-icons">launch</i></a>
                  </div>
 
@@ -57,6 +66,14 @@ var docDiv = (doc) => {
 
         
                  <b style="font-size:14pt">${fac_name}</b>
+                 
+                 <table border="1">
+                 <thead>
+                 <p>A OF INTEREST</p>
+                 <b style="font-size:15pt">${inte}</b>
+                 </thead>
+                 </table>
+                 
                  <a style="margin-left:auto;color:black;margin-right:20px;" href='mailto:${email}' "><i class="material-icons">email</i></a>
                  <a style="color:black;" href=${fac_url} target="_blank"><i class="material-icons">launch</i></a>
                  </div>
@@ -90,6 +107,9 @@ var doSearch = function() {
         "selected_loc_filters" : selected_loc_filters,
         "selected_uni_filters": selected_uni_filters
     }
+
+    console.log("doSearch function");
+
     if (searchTerm!='')
     {
     var num_fetched_res = 0
@@ -103,6 +123,11 @@ var doSearch = function() {
     }).then(response => {
         response.json().then(data => {
             const docs = data.docs;
+
+            console.log("print docs");
+            console.log(docs);
+
+
             $("#docs-div").empty();
 
             docs.forEach(doc => {
