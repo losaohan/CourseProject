@@ -88,7 +88,7 @@ def search():
     depts = [index.metadata(res[0]).get('department') for res in results]
     fac_names = [index.metadata(res[0]).get('fac_name') for res in results]
     fac_urls = [index.metadata(res[0]).get('fac_url') for res in results]
-    interest = [index.metadata(res[0]).get('fac_name') for res in results]
+    interest = [index.metadata(res[0]).get('interest').title() for res in results]
    
 
     previews = _get_doc_previews(doc_names,querytext)

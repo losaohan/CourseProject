@@ -27,13 +27,16 @@ var docDiv = (doc) => {
        <div style="display: flex;">
 
         
-                 <b style="font-size:15pt">${fac_name}</b>
-                 
-                 <table border="1">
-                 <thead>
-                 <p>A OF INTEREST</p>
-                 <b style="font-size:15pt">${inte}</b>
-                 </thead>
+                <table style="width:80%">
+                
+                  <tr>
+                   <th style="text-align:left">
+                    <b style="font-size:15pt">${fac_name}</b>
+                   </th>
+                   <th style="text-align:right">
+                     <p>Area Of Interest: ${inte}</p>
+                   </th>
+                  </tr>
                  </table>
                  
                  <a style="margin-left:auto;color:black;" href=${fac_url} target="_blank"><i class="material-icons">launch</i></a>
@@ -64,14 +67,16 @@ var docDiv = (doc) => {
              <div class="card-header">
        <div style="display: flex;">
 
-        
-                 <b style="font-size:14pt">${fac_name}</b>
-                 
-                 <table border="1">
-                 <thead>
-                 <p>A OF INTEREST</p>
-                 <b style="font-size:15pt">${inte}</b>
-                 </thead>
+                <table style="width:80%">
+                
+                 <tr>
+                   <th style="text-align:left">
+                     <b style="font-size:14pt">${fac_name}</b>                                                  
+                   </th>  
+                   <th style="text-align:right">
+                     <p>Area Of Interest: ${inte}</p>
+                   </th>  
+                  </tr>
                  </table>
                  
                  <a style="margin-left:auto;color:black;margin-right:20px;" href='mailto:${email}' "><i class="material-icons">email</i></a>
