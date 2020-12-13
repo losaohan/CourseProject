@@ -96,7 +96,8 @@ def search():
 
 
     # docs = list(zip(doc_names, previews, emails,universities,depts,fac_names,fac_urls,states,countries))
-    docs = list(zip(doc_names, previews, emails, universities, depts, fac_names, fac_urls, states, countries,interest))
+    docs = list(zip(doc_names, previews, emails, universities, depts,
+                    fac_names, fac_urls, states, countries,interest))
 
     return jsonify({
         "docs": docs
